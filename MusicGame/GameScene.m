@@ -7,14 +7,6 @@
 //
 
 
-//Maybe objects are being deleted twice as they fade? Double check
-//Make sure newgame and didmovetoview are similar enough
-//particularly check gameactive and tutorialmode
-
-///CURRENT PROBLEMS
-
-//NEWGAME IS INCOMPLETE, DOES NOTHING ABOUT BALLSTORAGE ARRAY
-//HAVING balls and ballStorage is inefficent and wasteful
 
 
 #import "GameScene.h"
@@ -23,7 +15,7 @@
 @import CoreGraphics;
 @implementation GameScene
 
-//do I need this?
+//Category names for collisions
 static NSString* ballCategoryName = @"ball";
 static NSString* bubCategoryName = @"bub";
 static NSString* buttonCategoryName = @"button";
@@ -58,7 +50,12 @@ static const uint32_t ObstacleCategory  = 0x1 << 13;
 static const uint32_t BubCategory  = 0x1 << 14;
 static const uint32_t bgCategory  = 0x1 << 15;
 static const uint32_t goalCategory  = 0x1 << 16;
+
+
+//volume divider
 static int at = 54;
+
+//point variables
 CGPoint player;
 CGPoint negaPlayer;
 CGPoint buttonPoint;
@@ -68,6 +65,8 @@ CGPoint blockButtonPoint;
 CGPoint startButtonPoint;
 CGPoint tutorialButtonPoint;
 CGPoint pauseButtonPoint;
+
+//Constant button nodes
 SKShapeNode *goal;
 SKShapeNode *startButton;
 SKShapeNode *tutorialButton;
@@ -76,13 +75,15 @@ SKShapeNode *pauseButton;
 SKLabelNode *typeLabel;
 SKLabelNode *blockLabel;
 
-//buildTYpe buttons
+//buildTYpe buttons, for prototyping
 SKShapeNode *startButton2;
 SKShapeNode *startButton3;
 
+//velocity and size
 int velocity = 30;
 int rSize = 50;
 
+//
 int ballType;
 int blockType;
 bool goalActive;
@@ -99,13 +100,14 @@ UITouch *buttonTouch;
 int tutorialLevel;
 int testInt = 0;
 double buttonSize;
+
+//type variables for gameplay configuration
 int maxTypes = 5;
 int minTypes = 1;
-//should be static when buildtypes is removed
 int maxBlockTypes = 7;
 int minBlockTypes = 1;
-//int maxTypes = 5;
-//int blockTypes = 4;
+
+//Labels associated with tutorial
 SKLabelNode *tutLabel;
 SKLabelNode *tutLabel2;
 SKLabelNode *tutLabel3;
@@ -113,10 +115,14 @@ NSArray *tutMessage;
 NSArray *tutMessage2;
 NSArray *tutMessage3;
 int tutNum;
+
+//Ball variable storage
 NSMutableArray *balls;
 NSMutableArray *ballStorage;
 
 
+
+//Color variables
 SKColor *blockColor;
 SKColor *blockPressed;
 SKColor *pauseUn;
@@ -136,6 +142,8 @@ int ballNum3;
 int ballNum4;
 int ballNum5;
 int ballNum;
+
+//By default, maximum of 15
 int maxBalls = 15;
 int maxBalls1 = 15;
 int maxBalls2 = 15;
@@ -143,6 +151,7 @@ int maxBalls3 = 15;
 int maxBalls4 = 15;
 int maxBalls5 = 15;
 
+//Bools for buttons
 bool ballButtonBool;
 bool blockButtonBool;
 bool pauseButtonBool;
@@ -169,21 +178,16 @@ int vict1;
 int vict2;
 int vict3;
 
+
+//Standard buildType
 int buildType = 2;
 
 
-//Vector Maths
-//static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
-//    return CGPointMake(a.x + b.x, a.y + b.y);
-//}
 
+//Vector math for ball launching
 static inline CGPoint rwSub(CGPoint a, CGPoint b) {
     return CGPointMake(a.x - b.x, a.y - b.y);
 }
-
-//static inline CGPoint rwMult(CGPoint a, float b) {
-//    return CGPointMake(a.x * b, a.y * b);
-//}
 
 static inline float rwLength(CGPoint a) {
     return sqrtf(a.x * a.x + a.y * a.y);
@@ -204,7 +208,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
     [self.rtcmixManager parseScoreWithFilePath:scorePath];
 }
 
-//currently assumes 5 elements
+//currently assumes 6 elements, for storing balls and associated RTcmix values
 -(void) addVals: (NSArray *) vals{
     NSMutableArray *bob = [[NSMutableArray alloc] init];
     if([vals count] != 6){
@@ -215,7 +219,8 @@ static inline CGPoint rwNormalize(CGPoint a) {
     NSString *tom3 = [vals objectAtIndex: 2];
     NSString *tom4 = [vals objectAtIndex: 3];
     NSString *tom5 = [vals objectAtIndex: 4];
-    NSString *tom6 = [vals objectAtIndex: 4];
+    //was 4 for quite awhile without much perceived lack of functioning
+    NSString *tom6 = [vals objectAtIndex: 5];
     [bob addObject: tom1];
     [bob addObject: tom2];
     [bob addObject: tom3];
@@ -226,12 +231,14 @@ static inline CGPoint rwNormalize(CGPoint a) {
     [balls replaceObjectAtIndex: w withObject: bob];
 }
 
+//updating the RTcmix values of balls according to the ball
 -(void) updateBall: (BallNode *) ball{
     NSArray *currencies = @[[NSString stringWithFormat:@"%d", ball.ident], [NSString stringWithFormat:@"%d", ball.alive], [NSString stringWithFormat:@"%d", ball.voices], [NSString stringWithFormat:@"%f", ball.volume], [NSString stringWithFormat:@"%d", ball.health], [NSString stringWithFormat:@"%@", ball]];
     [self addVals: currencies];
     [ballStorage replaceObjectAtIndex: ball.ident withObject: ball];
 }
-//currently assumes 5 elements in stated order
+
+//currently assumes 6 elements in stated order
 - (NSString *) convertArray:(NSArray *) ballray {
     NSString *bob;
     if([ballray count] != 6){
@@ -247,11 +254,13 @@ static inline CGPoint rwNormalize(CGPoint a) {
     return bob;
 }
 
+//Add one voice
 -(void) addVoice: (BallNode *) ball{
     ball.voices = ball.voices + 1;
     [self updateBall: ball];
 }
 
+//Sets all tutorial victory conditions to 0
 -(void) setVic{
     vic1 = false;
     vic2 = false;
@@ -263,7 +272,9 @@ static inline CGPoint rwNormalize(CGPoint a) {
     vic8 = false;
 }
 
+//Changes tutorial level
 -(void) tutorialLevelChange{
+    //Refreshes everything to default values
     [self restart];
     [self refresh];
     [self createMessages];
@@ -274,16 +285,18 @@ static inline CGPoint rwNormalize(CGPoint a) {
     restartbuttonBool = true;
     shoot = true;
     ccounter = 0;
+    //Points for tutorial text
     CGPoint downMid;
     CGPoint upMid;
     CGPoint mid;
     int temp;
     [self setVic];
-    
+    //Switches based on level number
+    //Any unchanged values go with default
     switch (tutorialLevel){
         //Contact with block
         case 0:
-            //test level
+            //test level code
 
             
             
@@ -436,6 +449,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
     }
     typeLabel.text = [NSString stringWithFormat:@"%d", ballType];
 }
+//Helper function for tutorial
 -(void) changeBallNums: (int) i ii: (int) ii iii: (int) iii iv: (int) iv v: (int) v{
     maxBalls1 = i;
     maxBalls2 = ii;
@@ -443,13 +457,14 @@ static inline CGPoint rwNormalize(CGPoint a) {
     maxBalls4 = iv;
     maxBalls5 = v;
 }
+//Changes the global ball properties
 -(void) tutorialChangeBall: (int) start max: (int) max min: (int) min{
     ballType = start;
     maxTypes = max;
     minTypes = min;
     typeLabel.text = [NSString stringWithFormat:@"%d", ballType];
 }
-
+//Changes the global block properties
 -(void) tutorialChangeBlock: (int) start max: (int) max min: (int) min{
     blockType = start;
     maxBlockTypes = max;
@@ -465,15 +480,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
     }
     blockLabel.text = [NSString stringWithFormat:@"%d", blockType];
 }
--(void) drawRect: (CGRect) rect
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    UIColor * redColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
-    
-    CGContextSetFillColorWithColor(context, redColor.CGColor);
-    CGContextFillRect(context, self.frame);
-}
+
 -(void) createEcho: (CGPoint) pos{
     SKShapeNode *echo = [[SKShapeNode alloc] init];
     CGMutablePathRef myPath = CGPathCreateMutable();
@@ -493,9 +500,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
 -(void) createButton1{
     SKShapeNode *button = [[SKShapeNode alloc] init];
     button = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(buttonSize, buttonSize)];
-//    CGMutablePathRef myPath = CGPathCreateMutable();
-//    CGPathAddArc(myPath, NULL, 0,0, 30, 0, M_PI*2, YES);
-//    button.path = myPath;
     button.lineWidth = 1.0;
     button.position = buttonPoint;
     button.name = buttonCategoryName;
@@ -727,9 +731,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
     [self createStartButton];
     [self createTutorialButton];
     
-    //only for build types
-//    [self createStartButton2];
-//    [self createStartButton3];
 }
 -(void) deleteMenuButtons{
     [startButton removeFromParent];
@@ -888,15 +889,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
     [self addChild: goal];
 }
 
-/*
--(void) victory{
-    if(vict1
-       NSDate *start = [NSDate date];
-       // do stuff...
-       NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-       
-}
- */
+
 -(void) nextLevel{
     SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
@@ -1143,18 +1136,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
         ball.volume = newV;
     }
     ];
-    /*
-    SKAction *date = [SKAction customActionWithDuration:.1      actionBlock:^(SKNode *node, CGFloat elapsedTime) {
-        if(elapsedTime == .1){
-            NSLog(@"hello");
-            int w5 = ball.volume;
-            [self updateBall: ball];
-           
-        }
-    }
-    ];
-     */
-//    ball.volume = ball.volume + inc;
     
     [self runAction: up completion:^{
         [self updateBall: ball];
@@ -1268,9 +1249,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
     self.backgroundColor = [SKColor colorWithRed: bgr green: bgg blue: bgb alpha: 100];
     self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
     // 1 Create a physics body that borders the screen
-    
-    //    int k = self.frame.size.width;
-    //    int j = self.frame.size.height;
     SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     // 2 Set physicsBody of scene to borderBody
     self.physicsBody = borderBody;
@@ -1367,19 +1345,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
 
 -(void) newGameOld{
     goalActive = false;
-    //    SKScene labScene =
-    //    [self.view presentScene: GameScene];
-    //Code copied from breakout tutorial
-    
-//    bgr = .25;
-//    bgg = .75;
-//    bgb = .5;
-//    self.backgroundColor = [SKColor colorWithRed: bgr green: bgg blue: bgb alpha: 100];
-//    self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-    // 1 Create a physics body that borders the screen
-    
-    //    int k = self.frame.size.width;
-    //    int j = self.frame.size.height;
+
     SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     // 2 Set physicsBody of scene to borderBody
     self.physicsBody = borderBody;
@@ -1403,7 +1369,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
     //sets up balls array
     //initiate balls array
     [balls removeAllObjects];
-//    balls = [[NSMutableArray alloc] init];
     //set up three initial arrays (should be for loop)
     for(int i = 0; i < maxBalls; i++){
         NSArray *vals = @[[NSString stringWithFormat:@"%d", i], @"0.0", @"0", @"0"];
@@ -1663,34 +1628,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
     
 
     //begin continuous playing
-//    [self changeColor: ball];
-    /*
-    if(ballType == 1){
-        //begins score
-        NSString *values = [self convertArray: [balls objectAtIndex: curNum]];
-        [self.rtcmixManager parseScoreWithNSString:values];
-        NSString *scorePath = [[NSBundle mainBundle] pathForResource:@"eth" ofType:@"sco"];
-        [self.rtcmixManager parseScoreWithFilePath:scorePath];
-    }
-    else if(ballType == 2){
-        if(buildType != 1){
-            NSString *values = [self convertArray: [balls objectAtIndex: curNum]];
-            [self.rtcmixManager parseScoreWithNSString:values];
-            NSString *scorePath = [[NSBundle mainBundle] pathForResource:@"brad1" ofType:@"sco"];
-            [self.rtcmixManager parseScoreWithFilePath:scorePath];
-        }
-    }
-    else if(ballType == 4){
-        if(buildType != 1){
-            NSString *values = [self convertArray: [balls objectAtIndex: curNum]];
-            [self.rtcmixManager parseScoreWithNSString:values];
-            NSString *scorePath = [[NSBundle mainBundle] pathForResource:@"brad2" ofType:@"sco"];
-            [self.rtcmixManager parseScoreWithFilePath:scorePath];
-           
-        }
-    }
-     
-    else*/if(ballType == 5){
+if(ballType == 5){
         [self expire: ball length: 5];
     }
     else if(ballType == 6){
@@ -2261,13 +2199,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
                 [self createNextButton];
             }
         }
-        /*
-        NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"nose" ofType:@"sco"];
-        [self changeColor: (BallNode *) firstBody.node r: arc4random()%3 g: arc4random()%3 b: arc4random()%3];
-        [self changeColor: (BallNode *) secondBody.node r: arc4random()%3 g: arc4random()%3 b: arc4random()%3];
-        [self.rtcmixManager parseScoreWithFilePath:scorePath2];
-            [self createEcho: contact.contactPoint];
-         */
+
         if(clippingOK){
         NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"nose" ofType:@"sco"];
         [self.rtcmixManager parseScoreWithFilePath:scorePath2];
@@ -2278,21 +2210,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
             }
         }
     }
-    //Think this is defunct
-    /*
-    else if ((firstBody.categoryBitMask & BallCategory1) != 0 &&
-        (secondBody.categoryBitMask & BallCategory5) != 0)
-    {
-        [self fadeAway: (BallNode *) firstBody.node];
-        ballNum1 = ballNum1 - 1;
-        BallNode * ball = (BallNode *) secondBody.node;
-        ball.health = ball.health - 1;
-        if(ball.health <= 0){
-            [self fadeAway: ball];
-            ballNum5 = ballNum5 - 1;
-        }
-    }
-     */
     else if ((firstBody.categoryBitMask & BallCategory2) != 0 &&
              (secondBody.categoryBitMask & BallCategory3) != 0)
     {
@@ -2302,21 +2219,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
                 [self createNextButton];
             }
         }
-        /*
-        if(buildType != 3){
-        NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"mel" ofType:@"sco"];
-        [self.rtcmixManager parseScoreWithFilePath:scorePath2];
-                [self createEcho: contact.contactPoint];
-        } if(buildType != 1){
-        //volume stuff
-        BallNode *bnode = (BallNode *) firstBody.node;
-        if(bnode.volume < 1){
-            [self potUp: (BallNode *) firstBody.node amt: 0.1 t: 1];
-        }
-        [self fadeAway: (BallNode*) secondBody.node];
-        ballNum3--;
-        }
-         */
+
         [self changeColor: (BallNode *) secondBody.node r: arc4random()%3 g: arc4random()%3 b: arc4random()%3];
         [self changeColor: (BallNode *) firstBody.node r: arc4random()%3 g: arc4random()%3 b: arc4random()%3];
         NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"bars2" ofType:@"sco"];
@@ -2370,65 +2273,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
         }
     }
     
-    /*
-    else if ((firstBody.categoryBitMask & BallCategory1) != 0 &&
-        (secondBody.categoryBitMask & BallCategory5) != 0)
-    {
-        [self fadeAway: (BallNode *) firstBody.node];
-        ballNum1 = ballNum1-1;
-        BallNode * ball = (BallNode *) secondBody.node;
-        ball.health = ball.health - 1;
-        if(ball.health <= 0){
-            [self fadeAway: ball];
-            ballNum5 = ballNum5 - 1;
-        }
-        if(tutorialLevel==4){
-            
-        }
-    }
-    else if ((firstBody.categoryBitMask & BallCategory2) != 0 &&
-        (secondBody.categoryBitMask & BallCategory5) != 0)
-    {
-        [self fadeAway: (BallNode *) firstBody.node];
-        ballNum2 = ballNum2 - 1;
-        BallNode * ball = (BallNode *) secondBody.node;
-        ball.health = ball.health - 1;
-        if(ball.health <= 0){
-            [self fadeAway: ball];
-            ballNum5 = ballNum5 - 1;
-        }
-    }
-    else if ((firstBody.categoryBitMask & BallCategory3) != 0 &&
-        (secondBody.categoryBitMask & BallCategory5) != 0)
-    {
-        [self fadeAway: (BallNode *) firstBody.node];
-        ballNum3 = ballNum3 - 1;
-        BallNode * ball = (BallNode *) secondBody.node;
-        ball.health = ball.health - 1;
-        if(ball.health <= 0){
-            [self fadeAway: ball];
-            ballNum5 = ballNum5 - 1;
-        }
-    }
-    else if ((firstBody.categoryBitMask & BallCategory4) != 0 &&
-        (secondBody.categoryBitMask & BallCategory5) != 0)
-    {
-        [self fadeAway: (BallNode *) firstBody.node];
-        ballNum4 = ballNum4 - 4;
-        BOOL done = [self damage: (BallNode *) secondBody.node];
-        if(done){
-            ballNum5 = ballNum5 - 1;
-        }
-    /*        BallNode * ball = (BallNode *) secondBody.node;
-        ball.health = ball.health - 1;
-        if(ball.health <= 0){
-            [self fadeAway: ball];
-            ballNum5 = ballNum5 - 1;
-        }
- *//*
-    }
 
-*/
 //Drone block
     //block 5
     //handles voices
@@ -2728,106 +2573,6 @@ static inline CGPoint rwNormalize(CGPoint a) {
 
 
 
-
-//only deleted menu button stuff
--(void) refreshOld{
-    goalActive = false;
-    //    SKScene labScene =
-    //    [self.view presentScene: GameScene];
-    //Code copied from breakout tutorial
-    
-    //    bgr = .25;
-    //    bgg = .75;
-    //    bgb = .5;
-    //    self.backgroundColor = [SKColor colorWithRed: bgr green: bgg blue: bgb alpha: 100];
-    //    self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-    // 1 Create a physics body that borders the screen
-    
-    //    int k = self.frame.size.width;
-    //    int j = self.frame.size.height;
-    SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
-    // 2 Set physicsBody of scene to borderBody
-    self.physicsBody = borderBody;
-    // 3 Set the friction of that physicsBody to 0
-    self.physicsBody.friction = 0.0f;
-    self.physicsBody.categoryBitMask = bgCategory;
-    self.physicsWorld.contactDelegate = self;
-    
-    //RTcmix setup
-    
-    //gets initiated at 0
-    ballNum = 0;
-    //ballType starts at 1
-    ballType = 1;
-    blockType = 1;
-    ballNum1 = 0;
-    ballNum2 = 0;
-    ballNum3 = 0;
-    ballNum4 = 0;
-    ballNum5 = 0;
-    //sets up balls array
-    //initiate balls array
-    [balls removeAllObjects];
-    //    balls = [[NSMutableArray alloc] init];
-    //set up three initial arrays (should be for loop)
-    for(int i = 0; i < maxBalls; i++){
-        NSArray *vals = @[[NSString stringWithFormat:@"%d", i], @"0.0", @"0", @"0"];
-        NSMutableArray *bob = [[NSMutableArray alloc] init];
-        NSString *tom1 = [vals objectAtIndex: 0];
-        NSString *tom2 = [vals objectAtIndex: 1];
-        NSString *tom3 = [vals objectAtIndex: 2];
-        NSString *tom4 = [vals objectAtIndex: 3];
-        [bob addObject: tom1];
-        [bob addObject: tom2];
-        [bob addObject: tom3];
-        [bob addObject: tom4];
-        [balls addObject: bob];
-        
-    }
-    //create button
-    
-    //    [self createObstacles];
-    //    [self createStartBalls];
-    //    [self createGoal];
-    
-    
-    
-    //    balls = [NSMutableArray array],[NSMutableArray array],[NSMutableArray array];
-    //    [self addChild:myLabel];
-    
-    //set up balltype label
-    //create button
-    typeLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-    typeLabel.text = @"1";
-    typeLabel.fontSize = 20;
-    typeLabel.position = buttonPoint;
-    [self addChild: typeLabel];
-    //blockLabel
-    blockLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-    blockLabel.text = @"1";
-    blockLabel.fontSize = 20;
-    blockLabel.position = CGPointMake(buttonSize*3/2, buttonSize/2);
-    [self addChild: blockLabel];
-    [self createButton];
-    //set balls to 0
-    [self createButton];
-    if(blockActive){
-        blockButton.fillColor = blockPressed;
-    } else{
-        blockButton.fillColor = [SKColor yellowColor];
-    }
-    
-    
-    blockActive = false;
-    if(blockActive){
-        blockButton.fillColor = blockPressed;
-    } else{
-        blockButton.fillColor = [SKColor yellowColor];
-    }
-    
-}
-
-//only deleted menu button stuff
 -(void) refresh{
     goalActive = false;
     SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
@@ -2980,7 +2725,16 @@ static inline CGPoint rwNormalize(CGPoint a) {
     tutorialMode = false;
 }
 
-
+//Discarded drawRect function
+-(void) drawRect: (CGRect) rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    UIColor * redColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
+    
+    CGContextSetFillColorWithColor(context, redColor.CGColor);
+    CGContextFillRect(context, self.frame);
+}
 
 
 
