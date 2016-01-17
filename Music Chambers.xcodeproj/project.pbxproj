@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA1D364F1B5837FC00DEDFFB /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1D364E1B5837FC00DEDFFB /* icons.xcassets */; };
+		AA356E431AD9C965001E77CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E421AD9C965001E77CD /* main.m */; };
+		AA356E461AD9C965001E77CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E451AD9C965001E77CD /* AppDelegate.m */; };
+		AA356E491AD9C965001E77CD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E481AD9C965001E77CD /* GameScene.m */; };
+		AA356E4B1AD9C965001E77CD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA356E4A1AD9C965001E77CD /* GameScene.sks */; };
+		AA356E4E1AD9C965001E77CD /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E4D1AD9C965001E77CD /* GameViewController.m */; };
+		AA356E511AD9C965001E77CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA356E4F1AD9C965001E77CD /* Main.storyboard */; };
+		AA356E531AD9C965001E77CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA356E521AD9C965001E77CD /* Images.xcassets */; };
+		AA356E561AD9C965001E77CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA356E541AD9C965001E77CD /* LaunchScreen.xib */; };
+		AA356E621AD9C965001E77CD /* MusicGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E611AD9C965001E77CD /* MusicGameTests.m */; };
+		AA356E6C1AD9C9BC001E77CD /* redBall.png in Resources */ = {isa = PBXBuildFile; fileRef = AA356E6B1AD9C9BC001E77CD /* redBall.png */; };
+		AA356E6E1AD9CA59001E77CD /* redBall2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA356E6D1AD9CA59001E77CD /* redBall2.png */; };
+		AA356E701AD9CFB3001E77CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA356E6F1AD9CFB3001E77CD /* AVFoundation.framework */; };
+		AA356E751AD9D06E001E77CD /* libiRTCMIX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA356E721AD9D06E001E77CD /* libiRTCMIX.a */; };
+		AA356E761AD9D06E001E77CD /* RTcmixPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356E741AD9D06E001E77CD /* RTcmixPlayer.m */; };
+		AA356E781ADA2573001E77CD /* greenBall.png in Resources */ = {isa = PBXBuildFile; fileRef = AA356E771ADA2573001E77CD /* greenBall.png */; };
+		AA5B73CF1B307EB80051DFD3 /* bars.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA5B73CE1B307EB80051DFD3 /* bars.sco */; };
+		AA5B73D11B308BDC0051DFD3 /* mwave.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA5B73D01B308BDC0051DFD3 /* mwave.sco */; };
+		AA5B73D31B308F1C0051DFD3 /* gran.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA5B73D21B308F1C0051DFD3 /* gran.sco */; };
+		AA5B73D51B3093350051DFD3 /* saxs.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA5B73D41B3093350051DFD3 /* saxs.sco */; };
+		AA6350C41B571FBA00E530FE /* brad1.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA6350C31B571FBA00E530FE /* brad1.sco */; };
+		AA6350C61B571FD000E530FE /* brad2.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA6350C51B571FD000E530FE /* brad2.sco */; };
+		AA6350C81B571FE800E530FE /* mwavedrone.sco in Resources */ = {isa = PBXBuildFile; fileRef = AA6350C71B571FE800E530FE /* mwavedrone.sco */; };
+		AAA653651AF95491001C68F0 /* b.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAA653641AF95491001C68F0 /* b.sco */; };
+		AAA653671AF95636001C68F0 /* a.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAA653661AF95636001C68F0 /* a.sco */; };
+		AAA653691AF95CEB001C68F0 /* eth2 in Resources */ = {isa = PBXBuildFile; fileRef = AAA653681AF95CEB001C68F0 /* eth2 */; };
+		AAB3FF651B2BFAD00042EBD3 /* stringy.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAB3FF641B2BFAD00042EBD3 /* stringy.sco */; };
+		AAB56A761BB1586400D9818F /* record.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAB56A751BB1586400D9818F /* record.sco */; };
+		AAB56A781BBFDA7900D9818F /* saxs2.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAB56A771BBFDA7900D9818F /* saxs2.sco */; };
+		AAB8908A1B9F0A0800CBA0DD /* bars2.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAB890891B9F0A0800CBA0DD /* bars2.sco */; };
+		AAC776C21B34B539000D944D /* SKShapeNode+BubbleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC776C11B34B539000D944D /* SKShapeNode+BubbleNode.m */; };
+		AACAA4221B223826008E5D70 /* change.sco in Resources */ = {isa = PBXBuildFile; fileRef = AACAA4211B223826008E5D70 /* change.sco */; };
+		AAEDDC3D1B4C9B32004335FE /* nose.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAEDDC3C1B4C9B32004335FE /* nose.sco */; };
+		AAEDDC3F1B4D6BDB004335FE /* mel.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAEDDC3E1B4D6BDB004335FE /* mel.sco */; };
+		AAF474041AE4B52700A110DF /* eth.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAF474031AE4B52700A110DF /* eth.sco */; };
+		AAF474061AE68AC700A110DF /* setup.sco in Resources */ = {isa = PBXBuildFile; fileRef = AAF474051AE68AC700A110DF /* setup.sco */; };
+		AAFE54A31B26329B00E3590B /* SKShapeNode+BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFE54A21B26329B00E3590B /* SKShapeNode+BallNode.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA356E5C1AD9C965001E77CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA356E351AD9C965001E77CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA356E3C1AD9C965001E77CD;
+			remoteInfo = MusicGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA1D364E1B5837FC00DEDFFB /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
+		AA356E3D1AD9C965001E77CD /* Music Chambers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Chambers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA356E411AD9C965001E77CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA356E421AD9C965001E77CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA356E441AD9C965001E77CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AA356E451AD9C965001E77CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AA356E471AD9C965001E77CD /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		AA356E481AD9C965001E77CD /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		AA356E4A1AD9C965001E77CD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AA356E4C1AD9C965001E77CD /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		AA356E4D1AD9C965001E77CD /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		AA356E501AD9C965001E77CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA356E521AD9C965001E77CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AA356E551AD9C965001E77CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AA356E5B1AD9C965001E77CD /* Music ChambersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music ChambersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA356E601AD9C965001E77CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA356E611AD9C965001E77CD /* MusicGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicGameTests.m; sourceTree = "<group>"; };
+		AA356E6B1AD9C9BC001E77CD /* redBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redBall.png; sourceTree = "<group>"; };
+		AA356E6D1AD9CA59001E77CD /* redBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redBall2.png; sourceTree = "<group>"; };
+		AA356E6F1AD9CFB3001E77CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AA356E721AD9D06E001E77CD /* libiRTCMIX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiRTCMIX.a; sourceTree = "<group>"; };
+		AA356E731AD9D06E001E77CD /* RTcmixPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTcmixPlayer.h; sourceTree = "<group>"; };
+		AA356E741AD9D06E001E77CD /* RTcmixPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTcmixPlayer.m; sourceTree = "<group>"; };
+		AA356E771ADA2573001E77CD /* greenBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenBall.png; sourceTree = "<group>"; };
+		AA5B73CE1B307EB80051DFD3 /* bars.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bars.sco; sourceTree = "<group>"; };
+		AA5B73D01B308BDC0051DFD3 /* mwave.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mwave.sco; sourceTree = "<group>"; };
+		AA5B73D21B308F1C0051DFD3 /* gran.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gran.sco; sourceTree = "<group>"; };
+		AA5B73D41B3093350051DFD3 /* saxs.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = saxs.sco; sourceTree = "<group>"; };
+		AA6350C31B571FBA00E530FE /* brad1.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = brad1.sco; sourceTree = "<group>"; };
+		AA6350C51B571FD000E530FE /* brad2.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = brad2.sco; sourceTree = "<group>"; };
+		AA6350C71B571FE800E530FE /* mwavedrone.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mwavedrone.sco; sourceTree = "<group>"; };
+		AAA653641AF95491001C68F0 /* b.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = b.sco; sourceTree = "<group>"; };
+		AAA653661AF95636001C68F0 /* a.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = a.sco; sourceTree = "<group>"; };
+		AAA653681AF95CEB001C68F0 /* eth2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eth2; sourceTree = "<group>"; };
+		AAB3FF641B2BFAD00042EBD3 /* stringy.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stringy.sco; sourceTree = "<group>"; };
+		AAB56A751BB1586400D9818F /* record.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = record.sco; sourceTree = "<group>"; };
+		AAB56A771BBFDA7900D9818F /* saxs2.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = saxs2.sco; sourceTree = "<group>"; };
+		AAB890891B9F0A0800CBA0DD /* bars2.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bars2.sco; sourceTree = "<group>"; };
+		AAC776C01B34B539000D944D /* SKShapeNode+BubbleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKShapeNode+BubbleNode.h"; sourceTree = "<group>"; };
+		AAC776C11B34B539000D944D /* SKShapeNode+BubbleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKShapeNode+BubbleNode.m"; sourceTree = "<group>"; };
+		AACAA4211B223826008E5D70 /* change.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.sco; sourceTree = "<group>"; };
+		AAEDDC3C1B4C9B32004335FE /* nose.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nose.sco; sourceTree = "<group>"; };
+		AAEDDC3E1B4D6BDB004335FE /* mel.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mel.sco; sourceTree = "<group>"; };
+		AAF474031AE4B52700A110DF /* eth.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eth.sco; sourceTree = "<group>"; };
+		AAF474051AE68AC700A110DF /* setup.sco */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setup.sco; sourceTree = "<group>"; };
+		AAFE54A11B26329B00E3590B /* SKShapeNode+BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKShapeNode+BallNode.h"; sourceTree = "<group>"; };
+		AAFE54A21B26329B00E3590B /* SKShapeNode+BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKShapeNode+BallNode.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA356E3A1AD9C965001E77CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA356E751AD9D06E001E77CD /* libiRTCMIX.a in Frameworks */,
+				AA356E701AD9CFB3001E77CD /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA356E581AD9C965001E77CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA356E341AD9C965001E77CD = {
+			isa = PBXGroup;
+			children = (
+				AA356E711AD9D03A001E77CD /* RTcmix */,
+				AA356E6F1AD9CFB3001E77CD /* AVFoundation.framework */,
+				AA356E3F1AD9C965001E77CD /* Music Chambers */,
+				AA356E5E1AD9C965001E77CD /* Music ChambersTests */,
+				AA356E3E1AD9C965001E77CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA356E3E1AD9C965001E77CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA356E3D1AD9C965001E77CD /* Music Chambers.app */,
+				AA356E5B1AD9C965001E77CD /* Music ChambersTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA356E3F1AD9C965001E77CD /* Music Chambers */ = {
+			isa = PBXGroup;
+			children = (
+				AA1D364E1B5837FC00DEDFFB /* icons.xcassets */,
+				AA356E451AD9C965001E77CD /* AppDelegate.m */,
+				AA356E441AD9C965001E77CD /* AppDelegate.h */,
+				AA356E471AD9C965001E77CD /* GameScene.h */,
+				AA356E481AD9C965001E77CD /* GameScene.m */,
+				AAB56A751BB1586400D9818F /* record.sco */,
+				AA6350C31B571FBA00E530FE /* brad1.sco */,
+				AA6350C51B571FD000E530FE /* brad2.sco */,
+				AA6350C71B571FE800E530FE /* mwavedrone.sco */,
+				AAFE54A11B26329B00E3590B /* SKShapeNode+BallNode.h */,
+				AAFE54A21B26329B00E3590B /* SKShapeNode+BallNode.m */,
+				AAC776C01B34B539000D944D /* SKShapeNode+BubbleNode.h */,
+				AAC776C11B34B539000D944D /* SKShapeNode+BubbleNode.m */,
+				AACAA4211B223826008E5D70 /* change.sco */,
+				AAEDDC3C1B4C9B32004335FE /* nose.sco */,
+				AAA653661AF95636001C68F0 /* a.sco */,
+				AAEDDC3E1B4D6BDB004335FE /* mel.sco */,
+				AA5B73CE1B307EB80051DFD3 /* bars.sco */,
+				AAB890891B9F0A0800CBA0DD /* bars2.sco */,
+				AA5B73D01B308BDC0051DFD3 /* mwave.sco */,
+				AA5B73D21B308F1C0051DFD3 /* gran.sco */,
+				AA5B73D41B3093350051DFD3 /* saxs.sco */,
+				AAB56A771BBFDA7900D9818F /* saxs2.sco */,
+				AAF474031AE4B52700A110DF /* eth.sco */,
+				AAB3FF641B2BFAD00042EBD3 /* stringy.sco */,
+				AAA653681AF95CEB001C68F0 /* eth2 */,
+				AAA653641AF95491001C68F0 /* b.sco */,
+				AAF474051AE68AC700A110DF /* setup.sco */,
+				AA356E4A1AD9C965001E77CD /* GameScene.sks */,
+				AA356E4C1AD9C965001E77CD /* GameViewController.h */,
+				AA356E4D1AD9C965001E77CD /* GameViewController.m */,
+				AA356E4F1AD9C965001E77CD /* Main.storyboard */,
+				AA356E521AD9C965001E77CD /* Images.xcassets */,
+				AA356E771ADA2573001E77CD /* greenBall.png */,
+				AA356E6D1AD9CA59001E77CD /* redBall2.png */,
+				AA356E6B1AD9C9BC001E77CD /* redBall.png */,
+				AA356E541AD9C965001E77CD /* LaunchScreen.xib */,
+				AA356E401AD9C965001E77CD /* Supporting Files */,
+			);
+			name = "Music Chambers";
+			path = MusicGame;
+			sourceTree = "<group>";
+		};
+		AA356E401AD9C965001E77CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA356E411AD9C965001E77CD /* Info.plist */,
+				AA356E421AD9C965001E77CD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA356E5E1AD9C965001E77CD /* Music ChambersTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA356E611AD9C965001E77CD /* MusicGameTests.m */,
+				AA356E5F1AD9C965001E77CD /* Supporting Files */,
+			);
+			name = "Music ChambersTests";
+			path = MusicGameTests;
+			sourceTree = "<group>";
+		};
+		AA356E5F1AD9C965001E77CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA356E601AD9C965001E77CD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA356E711AD9D03A001E77CD /* RTcmix */ = {
+			isa = PBXGroup;
+			children = (
+				AA356E721AD9D06E001E77CD /* libiRTCMIX.a */,
+				AA356E731AD9D06E001E77CD /* RTcmixPlayer.h */,
+				AA356E741AD9D06E001E77CD /* RTcmixPlayer.m */,
+			);
+			name = RTcmix;
+			path = MusicGame;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA356E3C1AD9C965001E77CD /* Music Chambers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA356E651AD9C965001E77CD /* Build configuration list for PBXNativeTarget "Music Chambers" */;
+			buildPhases = (
+				AA356E391AD9C965001E77CD /* Sources */,
+				AA356E3A1AD9C965001E77CD /* Frameworks */,
+				AA356E3B1AD9C965001E77CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Music Chambers";
+			productName = MusicGame;
+			productReference = AA356E3D1AD9C965001E77CD /* Music Chambers.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA356E5A1AD9C965001E77CD /* Music ChambersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA356E681AD9C965001E77CD /* Build configuration list for PBXNativeTarget "Music ChambersTests" */;
+			buildPhases = (
+				AA356E571AD9C965001E77CD /* Sources */,
+				AA356E581AD9C965001E77CD /* Frameworks */,
+				AA356E591AD9C965001E77CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA356E5D1AD9C965001E77CD /* PBXTargetDependency */,
+			);
+			name = "Music ChambersTests";
+			productName = MusicGameTests;
+			productReference = AA356E5B1AD9C965001E77CD /* Music ChambersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA356E351AD9C965001E77CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Ethan;
+				TargetAttributes = {
+					AA356E3C1AD9C965001E77CD = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 886M8AM35W;
+					};
+					AA356E5A1AD9C965001E77CD = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = AA356E3C1AD9C965001E77CD;
+					};
+				};
+			};
+			buildConfigurationList = AA356E381AD9C965001E77CD /* Build configuration list for PBXProject "Music Chambers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA356E341AD9C965001E77CD;
+			productRefGroup = AA356E3E1AD9C965001E77CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA356E3C1AD9C965001E77CD /* Music Chambers */,
+				AA356E5A1AD9C965001E77CD /* Music ChambersTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA356E3B1AD9C965001E77CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA653671AF95636001C68F0 /* a.sco in Resources */,
+				AAA653651AF95491001C68F0 /* b.sco in Resources */,
+				AA356E561AD9C965001E77CD /* LaunchScreen.xib in Resources */,
+				AAB8908A1B9F0A0800CBA0DD /* bars2.sco in Resources */,
+				AAA653691AF95CEB001C68F0 /* eth2 in Resources */,
+				AAF474061AE68AC700A110DF /* setup.sco in Resources */,
+				AA356E6E1AD9CA59001E77CD /* redBall2.png in Resources */,
+				AA1D364F1B5837FC00DEDFFB /* icons.xcassets in Resources */,
+				AAB3FF651B2BFAD00042EBD3 /* stringy.sco in Resources */,
+				AA6350C61B571FD000E530FE /* brad2.sco in Resources */,
+				AA5B73CF1B307EB80051DFD3 /* bars.sco in Resources */,
+				AA356E6C1AD9C9BC001E77CD /* redBall.png in Resources */,
+				AAF474041AE4B52700A110DF /* eth.sco in Resources */,
+				AA356E531AD9C965001E77CD /* Images.xcassets in Resources */,
+				AA6350C41B571FBA00E530FE /* brad1.sco in Resources */,
+				AA356E4B1AD9C965001E77CD /* GameScene.sks in Resources */,
+				AAEDDC3F1B4D6BDB004335FE /* mel.sco in Resources */,
+				AAB56A781BBFDA7900D9818F /* saxs2.sco in Resources */,
+				AA5B73D31B308F1C0051DFD3 /* gran.sco in Resources */,
+				AA6350C81B571FE800E530FE /* mwavedrone.sco in Resources */,
+				AA5B73D11B308BDC0051DFD3 /* mwave.sco in Resources */,
+				AA356E781ADA2573001E77CD /* greenBall.png in Resources */,
+				AACAA4221B223826008E5D70 /* change.sco in Resources */,
+				AAB56A761BB1586400D9818F /* record.sco in Resources */,
+				AAEDDC3D1B4C9B32004335FE /* nose.sco in Resources */,
+				AA5B73D51B3093350051DFD3 /* saxs.sco in Resources */,
+				AA356E511AD9C965001E77CD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA356E591AD9C965001E77CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA356E391AD9C965001E77CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA356E4E1AD9C965001E77CD /* GameViewController.m in Sources */,
+				AAC776C21B34B539000D944D /* SKShapeNode+BubbleNode.m in Sources */,
+				AA356E461AD9C965001E77CD /* AppDelegate.m in Sources */,
+				AA356E491AD9C965001E77CD /* GameScene.m in Sources */,
+				AA356E761AD9D06E001E77CD /* RTcmixPlayer.m in Sources */,
+				AAFE54A31B26329B00E3590B /* SKShapeNode+BallNode.m in Sources */,
+				AA356E431AD9C965001E77CD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA356E571AD9C965001E77CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA356E621AD9C965001E77CD /* MusicGameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA356E5D1AD9C965001E77CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA356E3C1AD9C965001E77CD /* Music Chambers */;
+			targetProxy = AA356E5C1AD9C965001E77CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA356E4F1AD9C965001E77CD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA356E501AD9C965001E77CD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA356E541AD9C965001E77CD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA356E551AD9C965001E77CD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA356E631AD9C965001E77CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Music Chambers";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA356E641AD9C965001E77CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "Music Chambers";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA356E661AD9C965001E77CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = MusicGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MusicGame",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "Music Chambers";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicGame/MusicGame-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA356E671AD9C965001E77CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = MusicGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MusicGame",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "Music Chambers";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicGame/MusicGame-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AA356E691AD9C965001E77CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MusicGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Music ChambersTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Chambers.app/Music Chambers";
+			};
+			name = Debug;
+		};
+		AA356E6A1AD9C965001E77CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MusicGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Music ChambersTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Chambers.app/Music Chambers";
+				"TEST_HOST[sdk=*]" = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA356E381AD9C965001E77CD /* Build configuration list for PBXProject "Music Chambers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA356E631AD9C965001E77CD /* Debug */,
+				AA356E641AD9C965001E77CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA356E651AD9C965001E77CD /* Build configuration list for PBXNativeTarget "Music Chambers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA356E661AD9C965001E77CD /* Debug */,
+				AA356E671AD9C965001E77CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA356E681AD9C965001E77CD /* Build configuration list for PBXNativeTarget "Music ChambersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA356E691AD9C965001E77CD /* Debug */,
+				AA356E6A1AD9C965001E77CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA356E351AD9C965001E77CD /* Project object */;
+}

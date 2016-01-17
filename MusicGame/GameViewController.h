@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "RTcmixPlayer.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <RTcmixPlayerDelegate>
+
+@property (nonatomic, strong)	RTcmixPlayer	*rtcmixManager;
+
+- (NSString *) convertArray:(NSArray *) ballray;
 
 @end
