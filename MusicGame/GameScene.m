@@ -272,6 +272,18 @@ static inline CGPoint rwNormalize(CGPoint a) {
     vic8 = false;
 }
 
+-(void) resetVals{
+    tutorialLevel = 200;
+    [self tutorialChangeBall: 1 max: 5 min: 1];
+    [self changeBallNums: 15 ii: 15 iii: 15 iv: 15 v: 15];
+    [self tutorialChangeBlock: 1 max: 7 min: 1];
+    ballButtonBool = true;
+    blockButtonBool = true;
+    pauseButtonBool = true;
+    bchangebuttonBool = true;
+    restartbuttonBool = true;
+}
+
 //Changes tutorial level
 -(void) tutorialLevelChange{
     //Refreshes everything to default values
@@ -306,7 +318,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
             NSLog(@"tutorial Active");
             [self tutorialChangeBall: 1 max: 1 min: 1];
             [self tutorialChangeBlock: 1 max: 1 min: 1];
-            [self changeBallNums: 1 ii: 0 iii: 0 iv: 0 v: 0];
+            [self changeBallNums: 3 ii: 0 iii: 0 iv: 0 v: 0];
             
             //create block
             blockType = 2;
@@ -320,7 +332,7 @@ static inline CGPoint rwNormalize(CGPoint a) {
         case 1:
             [self tutorialChangeBall: 1 max: 1 min: 1];
             [self tutorialChangeBlock: 1 max: 1 min: 1];
-            [self changeBallNums: 2 ii: 0 iii: 0 iv: 0 v: 0];
+            [self changeBallNums: 5 ii: 0 iii: 0 iv: 0 v: 0];
             [self textify:@"Balls can collide with each other to make sound too"];
             break;
         //Multiple balls
@@ -1728,8 +1740,8 @@ if(ballType == 5){
             }
             else if ([node.name isEqualToString:buttonCategoryName4]) {
                 [self changeBlock];
-                NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"record" ofType:@"sco"];
-                [self.rtcmixManager parseScoreWithFilePath:scorePath2];
+                //NSString *scorePath2 = [[NSBundle mainBundle] pathForResource:@"record" ofType:@"sco"];
+                //[self.rtcmixManager parseScoreWithFilePath:scorePath2];
             }
             else if (blockActive){
                 if ([node.name isEqualToString:blockCategoryName]) {
@@ -1820,6 +1832,7 @@ if(ballType == 5){
                 gameActive = true;
                 [self deleteMenuButtons];
 //                buildType = 1;
+                [self resetVals];
                 
             }
             else if([node.name isEqualToString:@"2"]){
@@ -2723,6 +2736,7 @@ if(ballType == 5){
     
     gameActive = false;
     tutorialMode = false;
+    
 }
 
 //Discarded drawRect function
